@@ -7,7 +7,7 @@ let echoSticker = false;
 let echoMessage = false;
 
 bot.on("message", msg => {
-  console.log(msg);
+  // console.log(msg);
   const match = phrase => new RegExp(".*" + phrase + ".*").test(msg.text);
   const matchExact = phrase => new RegExp(phrase).test(msg.text);
   const reply = text => bot.sendMessage(msg.chat.id, text);
@@ -20,22 +20,22 @@ bot.on("message", msg => {
 
   if (echoSticker) {
     console.log('??????')
-    if (msg.sticker) rude() || reply('Sticker ID: ' + msg.sticker.file_id);
+    if (msg.sticker) reply(rude() || 'Sticker ID: ' + msg.sticker.file_id);
     else reply("That wasn't a sticker.");
     echoSticker = false;
   } else if (echoMessage) {
-    rude() || reply(JSON.stringify(msg));
+    reply(rude() || JSON.stringify(msg));
     echoMessage = false
   } else if (msg.new_chat_members) reply(WELCOME_MESSAGE(msg.new_chat_members));
   else if (matchExact("bad bot")) reply("Fuck you");
   else if (matchExact("good bot")) goodBot();
-  else if (matchExact("zepto please")) rude() || zepto();
+  else if (matchExact("zepto please")) zepto()
   else if (matchExact("bot sticker")) echoSticker = true;
   else if (matchExact("bot echo sticker")) echoSticker = true;
-  else if (matchExact("bot echo")) rude() || reply(JSON.stringify(msg));
   else if (matchExact("bot echo next")) echoMessage = true;
-  else if (matchExact("bot help")) rude() || reply(HELP_REPLY);
-  else if (matchExact("bot github")) rude() || reply(GITHUB_LINK);
+  else if (matchExact("bot echo")) reply(rude() || JSON.stringify(msg));
+  else if (matchExact("bot help")) reply(rude() || HELP_REPLY);
+  else if (matchExact("bot github")) reply(rude() || GITHUB_LINK);
   else if (match("linux")) linux();
   else if (match("josh")) josh();
   else if (match("bot")) reply("Did someone say bot?");
