@@ -1,0 +1,9 @@
+{
+  "name": "banter-bot",
+  "version": "1.0.0",
+  "description": "linux banter bot",
+  "main": "app.js",
+  "repository": "https://github.com/closetothe/banter-bot.git",
+  "author": "closetothe <jamiel.nr@gmail.com>",
+  "license": "MIT"
+}
