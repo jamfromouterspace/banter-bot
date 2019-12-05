@@ -3,12 +3,11 @@ const TelegramBot = require("node-telegram-bot-api");
 const token = process.env.API_KEY;
 const bot = new TelegramBot(token, { polling: true });
 
-const echoSticker = false;
-const echoMessage = false;
+let echoSticker = false;
+let echoMessage = false;
 
 bot.on("message", msg => {
   console.log(msg);
-
   const match = phrase => new RegExp(".*" + phrase + ".*").test(msg.text);
   const matchExact = phrase => new RegExp(phrase).test(msg.text);
   const reply = text => bot.sendMessage(msg.chat.id, text);
@@ -20,31 +19,30 @@ bot.on("message", msg => {
   if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
 
   if (echoSticker) {
-    if (msg.sticker) reply(msg.sticker.file_id);
+    console.log('??????')
+    if (msg.sticker) reply('Sticker ID: ' + msg.sticker.file_id);
     else reply("That wasn't a sticker.");
     echoSticker = false;
-  } else if (echoMessage) {
-    reply(JSON.stringify(msg));
-  } else if (match("josh")) josh();
-  else if (msg.new_chat_members) reply(WELCOME_MESSAGE(msg.new_chat_members));
-  else if (match("linux")) linux();
+  } else if (msg.new_chat_members) reply(WELCOME_MESSAGE(msg.new_chat_members));
   else if (matchExact("bad bot")) reply("Fuck you");
-  else if (match("good bot")) goodBot();
+  else if (matchExact("good bot")) goodBot();
   else if (matchExact("zepto please")) zepto();
   else if (matchExact("bot sticker")) echoSticker = true;
   else if (matchExact("bot echo sticker")) echoSticker = true;
-  else if (matchExact("bot echo")) echoMessage = true;
+  else if (matchExact("bot echo")) reply(JSON.stringify(msg));
   else if (matchExact("bot help")) reply(HELP_REPLY);
-  else if (match("bot github")) reply(GITHUB_LINK);
+  else if (matchExact("bot github")) reply(GITHUB_LINK);
+  else if (match("linux")) linux();
+  else if (match("josh")) josh();
   else if (match("bot")) reply("Did someone say bot?");
 });
 
 const HELP_REPLY = `--- BOT HELP ---
-\`bot echo\`: echo the next message's JSON details
-\`bot echo sticker\`: echo the next message's sticker ID
-\`bot github\`: get the github link
-\`zepto please\`: get some zepto
-`;
+bot echo: echo the message's JSON details
+bot echo next: echo the next message's JSON details
+bot echo sticker: echo the next message's sticker ID
+bot github: get the github link
+zepto please: get some zepto`;
 
 const randomLinux = () => {
   const i = Math.floor(Math.random() * 10) % 4;
