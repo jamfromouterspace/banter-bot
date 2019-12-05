@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "description": "linux banter bot",
   "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
   "repository": "https://github.com/closetothe/banter-bot.git",
   "author": "closetothe <jamiel.nr@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-telegram-bot-api": "^0.40.0",
+    "nodemon": "^2.0.1"
+  }
 }
