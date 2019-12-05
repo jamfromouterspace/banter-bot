@@ -6,21 +6,27 @@ const bot = new TelegramBot(token, { polling: true });
 bot.on("message", msg => {
   console.log(msg);
 
+  const match = phrase =>  new RegExp('.*' + phrase + '.*').test(msg.text)
+  const matchExact = phrase =>  new RegExp(phrase).test(msg.text)
   const reply = text => bot.sendMessage(msg.chat.id, text);
   const josh = () => bot.sendSticker(msg.chat.id, JOSH_STICKER);
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
-  const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT);
+  const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT_STICKER);
+  const zepto = () => bot.sendSticker(msg.chat.id, ZEPTO_STICKER);
 
   if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
-  else if (/.*josh.*/i.test(msg.text)) josh();
-  else if (/.*linux.*/.test(msg.text)) reply(GITHUB_LINK);
+  else if (match('josh')) josh();
+  else if (match('bot github')) reply(GITHUB_LINK);
   else if (msg.new_chat_members) reply(WELCOME_MESSAGE(msg.new_chat_members));
-  else if (/.*linux.*/.test(msg.text)) linux();
-  else if (/.*bad bot.*/.test(msg.text)) reply("Fuck you");
-  else if (/.*good bot.*/.test(msg.text)) goodBot();
-  else if (/.*bot github.*/.test(msg.text)) reply(GITHUB_LINK);
-  else if (/.*bot.*/i.test(msg.text)) reply("Did someone say bot?");
+  else if (match('linux')) linux();
+  else if (matchExact('bad bot')) reply("Fuck you");
+  else if (match('good bot')) goodBot();
+  else if (matchExact('zepto please')) zepto();
+  else if (match('bot github')) reply(GITHUB_LINK);
+  else if (match('bot')) reply("Did someone say bot?");
 });
+
+const
 
 const randomLinux = () => {
   const i = Math.floor(Math.random() * 10) % 4;
@@ -33,7 +39,8 @@ const LINUX_STICKERS = [
   "CAADBAADjwEAApdrhgThTIzm5zjdpxYE",
   "CAADBAADGwEAApdrhgRugj8xK_OZzhYE"
 ];
-const GOOD_BOT = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE";
+const GOOD_BOT_STICKER = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE";
+const ZEPTO_STICKER = "CAADBAADSgIAApdrhgSbrW_V8Ssf9xYE";
 const JOSH_STICKER = "CAADAQADbgADmY5hL18k-jQuCglHFgQ";
 const GITHUB_LINK = "https://github.com/closetothe/banter-bot";
 const WELCOME_MESSAGE = users => `Welcome to the linux shitposting group: ${users
