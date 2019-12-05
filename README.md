@@ -1,6 +1,8 @@
 # Linux Banter Bot
 
 ## Environment
+* (node-telegram-bot)[https://github.com/yagop/node-telegram-bot-api/blob/master/doc]
+* Start command: yarn start
 * Node version 13.3.0
 * yarn
 * Secret config goes in .env file at root (read by dotenv package)
