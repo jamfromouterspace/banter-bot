@@ -42,7 +42,9 @@ bot.on("message", msg => {
 const HELP_REPLY = `--- BOT HELP ---
 \`bot echo\`: echo the next message's JSON details
 \`bot echo sticker\`: echo the next message's sticker ID
-\`bot github\`: get the github link`;
+\`bot github\`: get the github link
+\`zepto please\`: get some zepto
+`;
 
 const randomLinux = () => {
   const i = Math.floor(Math.random() * 10) % 4;
