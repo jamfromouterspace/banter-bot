@@ -15,6 +15,7 @@ bot.on("message", msg => {
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
   const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT_STICKER);
   const zepto = () => bot.sendSticker(msg.chat.id, ZEPTO_STICKER);
+  const jquery = () => bot.sendPhoto(msg.chat.id, CAVEMAN_SPONGEBOB_IMAGE)
 
   if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
 
@@ -38,6 +39,7 @@ bot.on("message", msg => {
   else if (matchExact("bot github")) reply(rude() || GITHUB_LINK);
   else if (match("linux")) linux();
   else if (match("josh")) josh();
+  else if (match("jquery")) jquery();
   else if (match("bot")) reply("Did someone say bot?");
 });
 
@@ -66,6 +68,7 @@ const LINUX_STICKERS = [
   "CAADBAADGwEAApdrhgRugj8xK_OZzhYE"
 ];
 
+const CAVEMAN_SPONGEBOB_IMAGE = "AgADAQADZqgxGyX7QEeABETtoJ7O7uIRFDAABAEAAwIAA3gAA5kIBQABFgQ"
 const GOOD_BOT_STICKER = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE";
 const ZEPTO_STICKER = "CAADBAADSgIAApdrhgSbrW_V8Ssf9xYE";
 const JOSH_STICKER = "CAADAQADbgADmY5hL18k-jQuCglHFgQ";
