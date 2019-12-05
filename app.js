@@ -20,7 +20,6 @@ bot.on("message", msg => {
   if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
 
   if (echoSticker) {
-    console.log('??????')
     if (msg.sticker) reply(rude() || 'Sticker ID: ' + msg.sticker.file_id);
     else reply("That wasn't a sticker.");
     echoSticker = false;
