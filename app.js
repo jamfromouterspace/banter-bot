@@ -3,30 +3,36 @@ const TelegramBot = require("node-telegram-bot-api");
 const token = process.env.API_KEY;
 const bot = new TelegramBot(token, { polling: true });
 
+const echoSticker = false;
+
 bot.on("message", msg => {
   console.log(msg);
 
-  const match = phrase =>  new RegExp('.*' + phrase + '.*').test(msg.text)
-  const matchExact = phrase =>  new RegExp(phrase).test(msg.text)
+  const match = phrase => new RegExp(".*" + phrase + ".*").test(msg.text);
+  const matchExact = phrase => new RegExp(phrase).test(msg.text);
   const reply = text => bot.sendMessage(msg.chat.id, text);
   const josh = () => bot.sendSticker(msg.chat.id, JOSH_STICKER);
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
   const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT_STICKER);
   const zepto = () => bot.sendSticker(msg.chat.id, ZEPTO_STICKER);
 
+  if (echoSticker) {
+    if (msg.sticker) reply(msg.sticker.file_id);
+    else reply("That wasn't a sticker.");
+    echoSticker = false;
+  }
   if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
-  else if (match('josh')) josh();
-  else if (match('bot github')) reply(GITHUB_LINK);
+  else if (match("josh")) josh();
+  else if (match("bot github")) reply(GITHUB_LINK);
   else if (msg.new_chat_members) reply(WELCOME_MESSAGE(msg.new_chat_members));
-  else if (match('linux')) linux();
-  else if (matchExact('bad bot')) reply("Fuck you");
-  else if (match('good bot')) goodBot();
-  else if (matchExact('zepto please')) zepto();
-  else if (match('bot github')) reply(GITHUB_LINK);
-  else if (match('bot')) reply("Did someone say bot?");
+  else if (match("linux")) linux();
+  else if (matchExact("bad bot")) reply("Fuck you");
+  else if (match("good bot")) goodBot();
+  else if (matchExact("zepto please")) zepto();
+  else if (matchExact("bot sticker")) echoSticker = true;
+  else if (match("bot github")) reply(GITHUB_LINK);
+  else if (match("bot")) reply("Did someone say bot?");
 });
-
-const
 
 const randomLinux = () => {
   const i = Math.floor(Math.random() * 10) % 4;
