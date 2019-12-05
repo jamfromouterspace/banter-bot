@@ -26,7 +26,6 @@ bot.on("message", msg => {
   } else if (echoMessage) {
     reply(JSON.stringify(msg));
   } else if (match("josh")) josh();
-  else if (match("bot github")) reply(GITHUB_LINK);
   else if (msg.new_chat_members) reply(WELCOME_MESSAGE(msg.new_chat_members));
   else if (match("linux")) linux();
   else if (matchExact("bad bot")) reply("Fuck you");
@@ -35,9 +34,15 @@ bot.on("message", msg => {
   else if (matchExact("bot sticker")) echoSticker = true;
   else if (matchExact("bot echo sticker")) echoSticker = true;
   else if (matchExact("bot echo")) echoMessage = true;
+  else if (matchExact("bot help")) reply(HELP_REPLY);
   else if (match("bot github")) reply(GITHUB_LINK);
   else if (match("bot")) reply("Did someone say bot?");
 });
+
+const HELP_REPLY = `--- BOT HELP ---
+\`bot echo\`: echo the next message's JSON details
+\`bot echo sticker\`: echo the next message's sticker ID
+\`bot github\`: get the github link`;
 
 const randomLinux = () => {
   const i = Math.floor(Math.random() * 10) % 4;
