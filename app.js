@@ -8,8 +8,8 @@ let echoMessage = false;
 
 bot.on("message", msg => {
   // console.log(msg);
-  const match = phrase => new RegExp(".*" + phrase + ".*").test(msg.text);
-  const matchExact = phrase => new RegExp(phrase).test(msg.text);
+  const match = phrase => new RegExp(".*" + phrase + ".*", 'i').test(msg.text);
+  const matchExact = phrase => new RegExp(phrase, 'i').test(msg.text);
   const reply = text => bot.sendMessage(msg.chat.id, text);
   const josh = () => bot.sendSticker(msg.chat.id, JOSH_STICKER);
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
