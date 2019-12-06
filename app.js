@@ -18,7 +18,8 @@ bot.on("message", msg => {
   const jquery = () => bot.sendPhoto(msg.chat.id, CAVEMAN_SPONGEBOB_IMAGE)
 
   if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
-
+  if (msg.from.username === "AnthonySmartens") reply("THE SMARTENS CREATOR HAS SPOKEN.");
+  
   if (echoSticker) {
     if (msg.sticker) reply(rude() || 'Sticker ID: ' + msg.sticker.file_id);
     else reply("That wasn't a sticker.");
