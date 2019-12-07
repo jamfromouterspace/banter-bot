@@ -101,7 +101,7 @@ bot.on("message", msg => {
   if (matchExact("bad bot")) reply("Fuck you");
   else if (matchExact("good bot")) goodBot();
 
-  if (msg.sticker) {
+  if (echoSticker && msg.sticker) {
     // Previous command was "echo sticker"
     replyRaw('Sticker ID: ' + msg.sticker.file_id);
     echoSticker = false;
