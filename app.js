@@ -2,6 +2,7 @@ require("dotenv").config();
 const TelegramBot = require("node-telegram-bot-api");
 const token = process.env.API_KEY;
 const bot = new TelegramBot(token, { polling: true });
+const CONSTANTS = require('./constants')
 
 let echoSticker = false;
 let echoMessage = false;
@@ -18,12 +19,12 @@ bot.on("message", msg => {
   const replyRaw = text => bot.sendMessage(msg.chat.id, text);
 
   // Responses
-  const josh = () => bot.sendSticker(msg.chat.id, JOSH_STICKER);
+  const josh = () => bot.sendSticker(msg.chat.id, CONSTANTS.JOSH_STICKER);
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
-  const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT_STICKER);
-  const zepto = () => bot.sendSticker(msg.chat.id, ZEPTO_STICKER);
-  const jquery = () => bot.sendPhoto(msg.chat.id, CAVEMAN_SPONGEBOB_IMAGE)
-  const spicy = () => bot.sendDocument(msg.chat.id, SPICY_GIF)
+  const goodBot = () => bot.sendSticker(msg.chat.id, CONSTANTS.GOOD_BOT_STICKER);
+  const zepto = () => bot.sendSticker(msg.chat.id, CONSTANTS.ZEPTO_STICKER);
+  const jquery = () => bot.sendPhoto(msg.chat.id, CONSTANTS.CAVEMAN_SPONGEBOB_IMAGE)
+  const spicy = () => bot.sendDocument(msg.chat.id, CONSTANTS.SPICY_GIF)
 
   const invalidCommand = () => {
     reply('*Invalid command*. Type `bot help` for list of valid commands.')
@@ -86,7 +87,7 @@ bot.on("message", msg => {
 
   // Welcome new members
   if (msg.new_chat_members) {
-    bot.sendMessage(msg.chat.id, WELCOME_MESSAGE(msg.new_chat_members), { parse_mode: 'markdown' });
+    bot.sendMessage(msg.chat.id, CONSTANTS.WELCOME_MESSAGE(msg.new_chat_members), { parse_mode: 'markdown' });
   }
 
   // Annoying behaviors
@@ -112,13 +113,13 @@ bot.on("message", msg => {
 
   // Normal commands
   const commandMap = {
-    "help": () => reply(HELP_REPLY),
+    "help": () => reply(CONSTANTS.HELP_REPLY),
     "echo": {
       "default": () => replyRaw(JSON.stringify(msg)),
       "sticker": setEchoSticker,
       "next": setEchoNext
     },
-    "github": () => reply(GITHUB_LINK),
+    "github": () => reply(CONSTANTS.GITHUB_LINK),
     "quiet": setQuiet,
     "shutup": () => setQuiet(true),
     "loud": setLoud,
@@ -141,7 +142,7 @@ bot.on("message", msg => {
     response()
   } else if (cmd === 'bot') {
     // Empty command
-    reply(HELP_REPLY)
+    reply(CONSTANTS.HELP_REPLY)
   }
 
   function parseCommand(commandList, commandMap, i) {
@@ -163,26 +164,6 @@ bot.on("message", msg => {
   }
 });
 
-const HELP_REPLY = `--- *BOT HELP* ---
-\`bot echo\`: echo the message's JSON details
-\`bot echo next\`: get the JSON details of the next message
-\`bot echo sticker\`: get the sticker ID of the next message
-\`bot github\`: get the github link
-\`bot quiet\`: stop sending unprompted messages
-\`bot loud\`: continue sending unprompted messages
-\`bot rude\`: stop sending unprompted messages
-\`bot polite\`: continue sending unprompted messages
-\`bot status\`: quiet/loud, rude/polite status
-*Other commands:*
-- \`bot jquery\`
-- \`bot zepto\`
-- \`bot josh\`
-- \`bot linux\`
-- \`bot spicy\`
-- \`bot master\`
-- \`good bot\`
-- \`bad bot\``
-
 const rude = () => {
   if (rudeMode) {
     const shouldBeRude = Math.random() <= 0.50
@@ -192,23 +173,5 @@ const rude = () => {
 
 const randomLinux = () => {
   const i = Math.floor(Math.random() * 10) % 4;
-  return LINUX_STICKERS[i];
+  return CONSTANTS.LINUX_STICKERS[i];
 };
-
-const LINUX_STICKERS = [
-  "CAADBAADZAEAApdrhgTNh414jbPDihYE",
-  "CAADBAAD_QADl2uGBLaZ6SiHh0w4FgQ",
-  "CAADBAADjwEAApdrhgThTIzm5zjdpxYE",
-  "CAADBAADGwEAApdrhgRugj8xK_OZzhYE"
-];
-
-const SPICY_GIF = "CgADBAADnQEAAli4ZVNGqjXuMqbYeRYE"
-const CAVEMAN_SPONGEBOB_IMAGE = "AgADAQADZqgxGyX7QEeABETtoJ7O7uIRFDAABAEAAwIAA3gAA5kIBQABFgQ"
-const GOOD_BOT_STICKER = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE";
-const ZEPTO_STICKER = "CAADBAADSgIAApdrhgSbrW_V8Ssf9xYE";
-const JOSH_STICKER = "CAADAQADbgADmY5hL18k-jQuCglHFgQ";
-const GITHUB_LINK = "https://github.com/closetothe/banter-bot";
-const WELCOME_MESSAGE = users => `*Welcome to the linux shitposting group: ${users
-  .map(u => u.first_name)
-  .join(", ")}*.
-It is meant for linux talk but often ends up being just memes or @jamielnr and Stuart talking about random ass shit for 400 messages`;
