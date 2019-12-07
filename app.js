@@ -10,7 +10,8 @@ bot.on("message", msg => {
   // console.log(msg);
   const match = phrase => new RegExp(".*" + phrase + ".*", 'i').test(msg.text);
   const matchExact = phrase => new RegExp(phrase, 'i').test(msg.text);
-  const reply = text => bot.sendMessage(msg.chat.id, text);
+  const reply = text => bot.sendMessage(msg.chat.id, text, { parse_mode: 'markdown' });
+
   const josh = () => bot.sendSticker(msg.chat.id, JOSH_STICKER);
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
   const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT_STICKER);
@@ -42,12 +43,13 @@ bot.on("message", msg => {
   else if (match("bot")) reply("Did someone say bot?");
 });
 
-const HELP_REPLY = `--- BOT HELP ---
-bot echo: echo the message's JSON details
-bot echo next: echo the next message's JSON details
-bot echo sticker: echo the next message's sticker ID
-bot github: get the github link
-zepto please: get some zepto`;
+const HELP_REPLY = `--- *BOT HELP* ---
+\`bot echo\`: echo the message's JSON details
+\`bot echo next\`: echo the next message's JSON details
+\`bot echo sticker\`: echo the next message's sticker ID
+\`bot github\`: get the github link
+\`bot github\`: get the github link
+\`zepto please\`: get some zepto`;
 
 const rude = () => {
   const shouldBeRude = Math.random() <= 0.20
