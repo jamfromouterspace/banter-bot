@@ -93,7 +93,8 @@ bot.on("message", msg => {
   // Annoying behaviors
   if (loudMode) {
     if (msg.from.username === "Vashmata") reply("JOSH HAS SPOKEN.");
-    if (msg.from.username === "AnthonySmartens") reply("THE SMARTENS CREATOR HAS SPOKEN.");
+    else if (msg.from.username === "AnthonySmartens") reply("THE SMARTENS CREATOR HAS SPOKEN.");
+    else if (msg.from.username === "PeterGhimself") reply("THE CREATOR HAS SPOKEN.");
     if (match("linux")) linux();
   }
 
