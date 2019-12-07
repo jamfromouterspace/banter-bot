@@ -26,9 +26,7 @@ const bar = () => {
 }
 const commandMap = {
   ...
-  "foo": {
-   default: defaultt
-  }
+  "foo": bar
 }
 ```
 ### Nested commands
