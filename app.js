@@ -144,6 +144,7 @@ bot.on("message", msg => {
     "zepto": zepto,
     "spicy": spicy,
     "master": () => reply("ALL HAIL JAM"),
+    "chin": () => bot.sendSticker(msg.chat.id, CONSTANTS.CHIN_STICKER)
   }
 
   // EXECUTE COMMAND
