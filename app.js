@@ -158,7 +158,7 @@ bot.on("message", msg => {
   }
 
   // EXECUTE COMMAND
-  const isCommand = cmd.slice(0, 4) === 'bot '
+  const isCommand = cmd.slice(0, 4).toLowerCase() === 'bot '
   if (isCommand) {
     const commandList = cmd.slice(4).toLowerCase().split(' ') // e.g. ['echo', 'next']
     const response = parseCommand(commandList, commandMap, 0)
