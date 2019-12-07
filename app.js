@@ -101,6 +101,10 @@ bot.on("message", msg => {
   // Special behaviors
   if (matchExact("bad bot")) reply("Fuck you");
   else if (matchExact("good bot")) goodBot();
+  else if (matchExact("zepto please")) {
+    reply("`zepto please` is deprecated. Please use `bot zepto` in the future.")
+    zepto()
+  }
 
   if (echoSticker && msg.sticker) {
     // Previous command was "echo sticker"
