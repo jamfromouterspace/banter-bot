@@ -1,7 +1,7 @@
 # Linux Banter Bot
 
 ## Environment
-* (node-telegram-bot)[https://github.com/yagop/node-telegram-bot-api/blob/master/doc]
+* [node-telegram-bot](https://github.com/yagop/node-telegram-bot-api/blob/master/doc)
 * Start command: yarn start
 * Node version 13.3.0
 * yarn
