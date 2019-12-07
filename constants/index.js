@@ -35,10 +35,11 @@ module.exports.LINUX_STICKERS = [
 
 module.exports.SPICY_GIF = "CgADBAADnQEAAli4ZVNGqjXuMqbYeRYE"
 module.exports.CAVEMAN_SPONGEBOB_IMAGE = "AgADAQADZqgxGyX7QEeABETtoJ7O7uIRFDAABAEAAwIAA3gAA5kIBQABFgQ"
-module.exports.GOOD_BOT_STICKER = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE";
-module.exports.ZEPTO_STICKER = "CAADBAADSgIAApdrhgSbrW_V8Ssf9xYE";
-module.exports.JOSH_STICKER = "CAADAQADbgADmY5hL18k-jQuCglHFgQ";
-module.exports.GITHUB_LINK = "https://github.com/closetothe/banter-bot";
+module.exports.GOOD_BOT_STICKER = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE"
+module.exports.BAD_BOT_STICKER = "CAADAQADTQADmY5hL7y7vBjIcBUiFgQ"
+module.exports.ZEPTO_STICKER = "CAADBAADSgIAApdrhgSbrW_V8Ssf9xYE"
+module.exports.JOSH_STICKER = "CAADAQADbgADmY5hL18k-jQuCglHFgQ"
+module.exports.GITHUB_LINK = "https://github.com/closetothe/banter-bot"
 module.exports.WELCOME_MESSAGE = users => `*Welcome to the linux shitposting group: ${users
   .map(u => u.first_name)
   .join(", ")}*.

@@ -99,7 +99,7 @@ bot.on("message", msg => {
   }
 
   // Special behaviors
-  if (matchExact("bad bot")) reply("Fuck you");
+  if (matchExact("bad bot")) bot.sendSticker(msg.chat.id, CONSTANTS.BAD_BOT_STICKER);
   else if (matchExact("good bot")) goodBot();
   else if (matchExact("zepto please")) {
     reply("`zepto please` is deprecated. Please use `bot zepto` in the future.")
