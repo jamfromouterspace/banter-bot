@@ -21,6 +21,8 @@ bot.on("message", msg => {
   // Responses
   const josh = () => bot.sendSticker(msg.chat.id, CONSTANTS.JOSH_STICKER);
   const linux = () => bot.sendSticker(msg.chat.id, randomLinux());
+  const bigBrain = () => bot.sendSticker(msg.chat.id, randomBrain());
+  const shrek = () => bot.sendSticker(msg.chat.id, randomShrek());
   const goodBot = () => bot.sendSticker(msg.chat.id, CONSTANTS.GOOD_BOT_STICKER);
   const zepto = () => bot.sendSticker(msg.chat.id, CONSTANTS.ZEPTO_STICKER);
   const jquery = () => bot.sendPhoto(msg.chat.id, CONSTANTS.CAVEMAN_SPONGEBOB_IMAGE)
@@ -144,7 +146,15 @@ bot.on("message", msg => {
     "zepto": zepto,
     "spicy": spicy,
     "master": () => reply("ALL HAIL JAM"),
-    "chin": () => bot.sendSticker(msg.chat.id, CONSTANTS.CHIN_STICKER)
+    "small": {
+      default: invalidCommand,
+      "brain": () => bot.sendSticker(msg.chat.id, CONSTANTS.SMALL_BRAIN_STICKER)
+    },
+    "big": {
+      default: invalidCommand,
+      "brain": bigBrain
+    },
+    "shrek": shrek
   }
 
   // EXECUTE COMMAND
@@ -184,7 +194,11 @@ const rude = () => {
   } else return false
 }
 
-const randomLinux = () => {
-  const i = Math.floor(Math.random() * 10) % 4;
-  return CONSTANTS.LINUX_STICKERS[i];
-};
+const randomSelection = (selection) => {
+  const i = Math.floor(Math.random() * 10) % selection.length;
+  return selection[i];
+}
+
+const randomLinux = () => randomSelection(CONSTANTS.LINUX_STICKERS)
+const randomBrain = () => randomSelection(CONSTANTS.BRAIN_STICKERS)
+const randomShrek = () => randomSelection(CONSTANTS.SHREK_STICKERS)
