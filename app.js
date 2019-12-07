@@ -42,8 +42,11 @@ bot.on("message", msg => {
 
   const setQuiet = (wasMeanAboutIt) => {
     if (loudMode) {
-      if (!wasMeanAboutIt) reply("Quieting down now...")
-      else reply("Yeah yeah fuck you okay fine I'll shut up")
+      if (!wasMeanAboutIt) bot.sendSticker(msg.chat.id, CONSTANTS.QUIET_STICKER);
+      else {
+        bot.sendSticker(msg.chat.id, CONSTANTS.QUIET_STICKER);
+        bot.sendSticker(msg.chat.id, CONSTANTS.MIDDLE_FINGER_STICKER);
+      }
       loudMode = false
     } else {
       reply("I'm already quiet!")
@@ -99,7 +102,7 @@ bot.on("message", msg => {
   }
 
   // Special behaviors
-  if (matchExact("bad bot")) bot.sendSticker(msg.chat.id, CONSTANTS.BAD_BOT_STICKER);
+  if (matchExact("bad bot")) bot.sendSticker(msg.chat.id, CONSTANTS.MIDDLE_FINGER_STICKER);
   else if (matchExact("good bot")) goodBot();
   else if (matchExact("zepto please")) {
     reply("`zepto please` is deprecated. Please use `bot zepto` in the future.")
