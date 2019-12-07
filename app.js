@@ -50,7 +50,7 @@ bot github: get the github link
 zepto please: get some zepto`;
 
 const rude = () => {
-  const shouldBeRude = Math.random() <= 0.30
+  const shouldBeRude = Math.random() <= 0.20
   if (shouldBeRude) return 'Nah'
   else return false
 }
