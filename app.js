@@ -23,6 +23,7 @@ bot.on("message", msg => {
   const goodBot = () => bot.sendSticker(msg.chat.id, GOOD_BOT_STICKER);
   const zepto = () => bot.sendSticker(msg.chat.id, ZEPTO_STICKER);
   const jquery = () => bot.sendPhoto(msg.chat.id, CAVEMAN_SPONGEBOB_IMAGE)
+  const spicy = () => bot.sendDocument(msg.chat.id, SPICY_GIF)
 
   const invalidCommand = () => {
     reply('*Invalid command*. Type `bot help` for list of valid commands.')
@@ -128,7 +129,7 @@ bot.on("message", msg => {
     "jquery": jquery,
     "linux": linux,
     "zepto": zepto,
-    // "spicy": spicy,
+    "spicy": spicy,
     "master": () => reply("ALL HAIL JAM"),
   }
 
@@ -201,6 +202,7 @@ const LINUX_STICKERS = [
   "CAADBAADGwEAApdrhgRugj8xK_OZzhYE"
 ];
 
+const SPICY_GIF = "CgADBAADnQEAAli4ZVNGqjXuMqbYeRYE"
 const CAVEMAN_SPONGEBOB_IMAGE = "AgADAQADZqgxGyX7QEeABETtoJ7O7uIRFDAABAEAAwIAA3gAA5kIBQABFgQ"
 const GOOD_BOT_STICKER = "CAADAQADMAADmY5hL3UAAUlp0ev2xhYE";
 const ZEPTO_STICKER = "CAADBAADSgIAApdrhgSbrW_V8Ssf9xYE";
