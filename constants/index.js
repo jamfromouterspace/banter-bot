@@ -1,6 +1,6 @@
 module.exports = {}
 
-module.exports.HELP_REPLY = `--- *BOT HELP* ---
+module.exports.HELP = `--- *BOT HELP* ---
 \`bot echo\`: echo the message's JSON details
 \`bot echo next\`: get the JSON details of the next message
 \`bot echo sticker\`: get the sticker ID of the next message
@@ -18,7 +18,13 @@ module.exports.HELP_REPLY = `--- *BOT HELP* ---
 - \`bot spicy\`
 - \`bot master\`
 - \`good bot\`
-- \`bad bot\``
+- \`bad bot\`
+*More info*
+- \`bot help rude\`
+- \`bot help loud\``
+
+module.exports.HELP_RUDE = 'Rude mode sets a 50% chance of ignoring your command.'
+module.exports.HELP_LOUD = `Loud mode allows special bot behaviors that aren't explicitly preceded by a command.`
 
 module.exports.LINUX_STICKERS = [
   "CAADBAADZAEAApdrhgTNh414jbPDihYE",

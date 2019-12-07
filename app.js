@@ -118,9 +118,13 @@ bot.on("message", msg => {
 
   // Normal commands
   const commandMap = {
-    "help": () => reply(CONSTANTS.HELP_REPLY),
+    "help": {
+      default: () => reply(CONSTANTS.HELP),
+      "rude": () => reply(CONSTANTS.HELP_RUDE),
+      "loud": () => reply(CONSTANTS.HELP_LOUD)
+    },
     "echo": {
-      "default": () => replyRaw(JSON.stringify(msg)),
+      default: () => replyRaw(JSON.stringify(msg)),
       "sticker": setEchoSticker,
       "next": setEchoNext
     },
