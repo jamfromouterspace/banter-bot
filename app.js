@@ -3,6 +3,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const token = process.env.API_KEY;
 const bot = new TelegramBot(token, { polling: true });
 const CONSTANTS = require('./constants')
+const FORTNITE_STRING = require('./constants/fortnite')
 
 let echoSticker = false;
 let echoMessage = false;
@@ -154,8 +155,8 @@ bot.on("message", msg => {
       default: invalidCommand,
       "brain": bigBrain
     },
-    "shrek": shrek
-    "fortnite": () => reply(CONSTANTS.fortnite)
+    "shrek": shrek,
+    "fortnite": () => reply(FORTNITE_STRING)
   }
 
   // EXECUTE COMMAND

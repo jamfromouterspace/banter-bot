@@ -1,4 +1,4 @@
-module.exports.fortnite = '⠀⠀⠀⠀⣀⣤
+module.exports = `⠀⠀⠀⠀⣀⣤
 ⠀⠀⠀⠀⣿⠿⣶
 ⠀⠀⠀⠀⣿⣿⣀
 ⠀⠀⠀⣶⣶⣿⠿⠛⣶
@@ -169,4 +169,4 @@ module.exports.fortnite = '⠀⠀⠀⠀⣀⣤
 ⠀⠀⣀⣤⣿⣿⣿
 ⠀⠒⠿⠛⠉⠿⣿
 ⠀⠀⠀⠀⠀⣀⣿⣿
-⠀⠀⠀⠀⣶⠿⠿⠛'
+⠀⠀⠀⠀⣶⠿⠿⠛`
