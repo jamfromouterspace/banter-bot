@@ -155,6 +155,7 @@ bot.on("message", msg => {
       "brain": bigBrain
     },
     "shrek": shrek
+    "fortnite": () => reply(CONSTANTS.fortnite)
   }
 
   // EXECUTE COMMAND
