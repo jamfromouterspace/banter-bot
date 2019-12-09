@@ -156,7 +156,10 @@ bot.on("message", msg => {
       "brain": bigBrain
     },
     "shrek": shrek,
-    "fortnite": () => reply(FORTNITE_STRING)
+    "fortnite": () => reply(FORTNITE_STRING),
+    "how": {
+      default: invalidCommand,
+      "fast": () => reply(CONSTANTS.VERY_VERY_FAST),
   }
 
   // EXECUTE COMMAND

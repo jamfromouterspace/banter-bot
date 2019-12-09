@@ -24,6 +24,7 @@ module.exports.HELP = `*BOT HELP*
 \`good bot\`
 \`bad bot\`
 \`bot fortnite\`
+\`bot how fast\`
 
 *More info*
 \`bot help rude\`
@@ -32,6 +33,8 @@ module.exports.HELP = `*BOT HELP*
 module.exports.HELP_RUDE =
   'Rude mode sets a 50% chance of ignoring your command.'
 module.exports.HELP_LOUD = 'Loud mode allows special bot behaviors that aren\'t explicitly preceded by a command.'
+
+module.exports.VERY_VERY_FAST = `a lot very ***fast*** for old computer tat kant handl ***quantum physics*** like my calculator thxtothispull now I run in calculatyr`
 
 module.exports.LINUX_STICKERS = [
   'CAADBAADZAEAApdrhgTNh414jbPDihYE',
