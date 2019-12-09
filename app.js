@@ -28,6 +28,7 @@ bot.on("message", msg => {
   const zepto = () => bot.sendSticker(msg.chat.id, CONSTANTS.ZEPTO_STICKER);
   const jquery = () => bot.sendPhoto(msg.chat.id, CONSTANTS.CAVEMAN_SPONGEBOB_IMAGE)
   const spicy = () => bot.sendDocument(msg.chat.id, CONSTANTS.SPICY_GIF)
+  const jfc = () => bot.sendDocument(msg.chat.id, CONSTANTS.JFC)
 
   const invalidCommand = () => {
     reply('*Invalid command*. Type `bot help` for list of valid commands.')
@@ -148,18 +149,22 @@ bot.on("message", msg => {
     "spicy": spicy,
     "master": () => reply("ALL HAIL JAM"),
     "small": {
-      default: invalidCommand,
       "brain": () => bot.sendSticker(msg.chat.id, CONSTANTS.SMALL_BRAIN_STICKER)
     },
     "big": {
-      default: invalidCommand,
       "brain": bigBrain
     },
     "shrek": shrek,
     "fortnite": () => reply(FORTNITE_STRING),
     "how": {
-      default: invalidCommand,
       "fast": () => reply(CONSTANTS.VERY_VERY_FAST),
+    },
+    "jesus": {
+      "fucking": {
+        "christ": jfc
+      }
+    },
+    "jfc" : jfc
   }
 
   // EXECUTE COMMAND
@@ -180,7 +185,10 @@ bot.on("message", msg => {
     if (!commandMap.hasOwnProperty(key)) return invalidCommand // Command not found in map
     if (i === commandList.length - 1) {
       // e.g. ["echo"] => return echo.default, since echo has subcommands
-      if (typeof commandMap[key] === 'object') return commandMap[key].default
+      if (typeof commandMap[key] === 'object') {
+        if (commandMap[key].hasOwnProperty('default')) return commandMap[key].default
+        return invalidCommand // If no default is specified, it is an invalid command
+      }
       // Normal command, no subcommands
       return commandMap[key]
     } else {

@@ -25,6 +25,7 @@ module.exports.HELP = `*BOT HELP*
 \`bad bot\`
 \`bot fortnite\`
 \`bot how fast\`
+\`bot jesus fucking christ\`
 
 *More info*
 \`bot help rude\`
@@ -60,6 +61,7 @@ module.exports.SHREK_STICKERS = [
   'CAADAQADeAADmY5hL4viip2vEBiSFgQ'
 ]
 
+module.exports.JFC = "CgADBAADuAEAAuQuxFKeyOCHYs9gjhYE"
 module.exports.SPICY_GIF = 'CgADBAADnQEAAli4ZVNGqjXuMqbYeRYE'
 module.exports.CAVEMAN_SPONGEBOB_IMAGE =
   'AgADAQADZqgxGyX7QEeABETtoJ7O7uIRFDAABAEAAwIAA3gAA5kIBQABFgQ'
